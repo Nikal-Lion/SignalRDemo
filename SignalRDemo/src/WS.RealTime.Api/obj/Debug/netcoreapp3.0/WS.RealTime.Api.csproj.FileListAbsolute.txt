@@ -1,0 +1,17 @@
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\src\WS.RealTime.Api\bin\Debug\netcoreapp3.0\appsettings.Development.json
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\src\WS.RealTime.Api\bin\Debug\netcoreapp3.0\appsettings.json
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\src\WS.RealTime.Api\bin\Debug\netcoreapp3.0\Properties\launchSettings.json
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\src\WS.RealTime.Api\bin\Debug\netcoreapp3.0\WS.RealTime.Api.exe
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\src\WS.RealTime.Api\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\src\WS.RealTime.Api\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.dll
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\src\WS.RealTime.Api\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\src\WS.RealTime.Api\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Relational.dll
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\src\WS.RealTime.Api\bin\Debug\netcoreapp3.0\RealTimeChat.dll
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\src\WS.RealTime.Api\bin\Debug\netcoreapp3.0\RealTimeChat.pdb
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\src\WS.RealTime.Api\obj\Debug\netcoreapp3.0\WS.RealTime.Api.csprojAssemblyReference.cache
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\src\WS.RealTime.Api\obj\Debug\netcoreapp3.0\WS.RealTime.Api.AssemblyInfoInputs.cache
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\src\WS.RealTime.Api\obj\Debug\netcoreapp3.0\WS.RealTime.Api.AssemblyInfo.cs
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\src\WS.RealTime.Api\obj\Debug\netcoreapp3.0\WS.RealTime.Api.RazorTargetAssemblyInfo.cache
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\src\WS.RealTime.Api\obj\Debug\netcoreapp3.0\WS.RealTime.Api.csproj.CopyComplete
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\src\WS.RealTime.Api\bin\Debug\netcoreapp3.0\Dapper.dll
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\src\WS.RealTime.Api\obj\Debug\netcoreapp3.0\WS.RealTime.Api.MvcApplicationPartsAssemblyInfo.cache

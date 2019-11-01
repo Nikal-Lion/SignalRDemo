@@ -2,13 +2,15 @@ using System;
 using RealTimeChat.Interfaces;
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
-using RealTimeChat.Entities;
-using RealTimeChat.RepositoryHelper;
+using DB.Core.Entities;
 using System.Linq.Expressions;
 using RealTimeChat.EnumUtil;
 using RealTimeChat.ExceptionUtil;
+using DB.Core.Dapper.Util;
+using DB.Core.EF.Util.DataRepo;
+using RealTimeChat.Hubs;
 
-namespace RealTimeChat.SocketHelper
+namespace RealTimeChat.Services
 {
 
 
@@ -52,7 +54,7 @@ namespace RealTimeChat.SocketHelper
                 CreateTime = now
             };
 
-            await Repository.Insert(log);
+            await DB.Core.EF.Util.DataRepo.Repository.Insert(log);
             //推送站内信
             await _messageHub.Clients.Groups(dto.ToUser).SendAsync("newmsg", push);
             //推送未读条数
@@ -102,36 +104,36 @@ namespace RealTimeChat.SocketHelper
 
             if (unread)
             {
-                //exp = exp.And(o => o.ReadTime == null);
+                exp = exp.And(o => o.ReadTime == null);
             }
-
             if (!string.IsNullOrEmpty(name))
             {
                 //exp = exp.And(o => o.Name.Contains(name));
             }
-
             if (!string.IsNullOrEmpty(detail))
             {
                 //exp = exp.And(o => o.Detail.Contains(detail));
             }
-
             if (type != null)
             {
                 //exp = exp.And(o => o.Type == type.Value);
             }
-
             if (createStart != null)
             {
                 //exp.And(o => o.CreateTime >= createStart.Value);
             }
-
             if (createEnd != null)
             {
                 //exp.And(o => o.CreateTime < createEnd.Value);
             }
 
-            return await Repository.FindPageObjectList(exp, o => o.Id, true, pageIndex,
-                pageSize, o => new PushMessageDTO
+            return await QueryUtil.FindPageObjectList(
+                exp,
+                o => o.Id,
+                true,
+                pageIndex,
+                pageSize,
+                o => new PushMessageDTO
                 {
                     Id = o.Id.ToString(),
                     CreateTime = o.CreateTime,
@@ -140,7 +142,8 @@ namespace RealTimeChat.SocketHelper
                     ToUser = o.ToUser,
                     Type = o.Type,
                     ReadTime = o.ReadTime
-                });
+                }
+            );
         }
 
         /// <summary>
@@ -150,7 +153,7 @@ namespace RealTimeChat.SocketHelper
         /// <returns></returns>
         public async Task Read(ObjectId id)
         {
-            var msg = await Repository.First(id);
+            var msg = await QueryUtil.First<Message>(id);
 
             if (msg == null)
             {
@@ -176,10 +179,12 @@ namespace RealTimeChat.SocketHelper
         {
             var user = await _uidClient.GetLoginUser();
 
-            await Repository.UpdateMany(o => o.ToUser == user.Account && o.ReadTime == null, o => new Message
-            {
-                ReadTime = DateTime.Now
-            });
+            await Repository.UpdateMany(
+                o => o.ToUser == user.Account && o.ReadTime == null,
+                o => new Message
+                {
+                    ReadTime = DateTime.Now
+                });
 
             await SendUnreadCount(user.Account);
         }
@@ -191,24 +196,56 @@ namespace RealTimeChat.SocketHelper
         public async Task<int> GetUnreadCount()
         {
             var user = await _uidClient.GetLoginUser();
-            return await Repository.Count(o => o.ToUser == user.Account && o.ReadTime == null);
+            return await QueryUtil.Count(user.Account, null);
         }
 
         /// <summary>
         /// 推送未读数到前端
         /// </summary>
         /// <returns></returns>
-        private async Task SendUnreadCount(string account)
+        public async Task SendUnreadCount(string account)
         {
-            var count = await Repository.Count(o => o.ToUser == account && o.ReadTime == null);
+            int count = await QueryUtil.Count(account, null);
+
             await _messageHub.Clients.Groups(account).SendAsync("unread", count);
         }
     }
-    public static class ExpressionCompare
+    public static class ExpressionAnd
     {
-        public static Expression And<TDelegate>(this Expression binary, Expression<TDelegate> exp)
+        /// <summary>
+        /// TODO 未实现And方法
+        /// </summary>
+        /// <typeparam name="TDelegate"></typeparam>
+        /// <param name="originExp"></param>
+        /// <param name="func"></param>
+        /// <returns></returns>
+        public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> originExp, Expression<Func<T, bool>> func)
+            where T : class
         {
-            return binary.And(exp);
+            var parameter = originExp.Parameters[0];
+            string parameterName = parameter?.Name ?? "o";      //o=>o.Prop... o = parameter.Name;
+            var nodeType = parameter.NodeType;
+            ParameterExpression pe = Expression.Parameter(typeof(T), parameterName);
+
+            MemberExpression me = null;
+            //Expression.Property(pe, "Age");
+
+            ConstantExpression constant = null;
+            //Expression.Constant(18, typeof(int));
+
+            BinaryExpression body =null;
+            if (nodeType == ExpressionType.And)
+            {
+                //body = Expression.And(parameter.Type)
+            }
+            else if(nodeType == ExpressionType.GreaterThan)
+            {
+                body = Expression.GreaterThanOrEqual(me, constant);
+            }
+
+            var expressionTree = Expression.Lambda<Func<T, bool>>(body, new[] { pe });
+
+            return expressionTree;
         }
     }
 }

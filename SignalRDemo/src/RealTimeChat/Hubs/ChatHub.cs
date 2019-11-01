@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RealTimeChat.SocketHelper
+namespace RealTimeChat.Hubs
 {
     
     public class ChatHub : Hub

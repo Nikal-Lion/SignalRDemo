@@ -1,0 +1,5 @@
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\EFApplicationCore\bin\Debug\netcoreapp3.0\EFApplicationCore.deps.json
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\EFApplicationCore\bin\Debug\netcoreapp3.0\EFApplicationCore.dll
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\EFApplicationCore\obj\Debug\netcoreapp3.0\EFApplicationCore.csprojAssemblyReference.cache
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\EFApplicationCore\obj\Debug\netcoreapp3.0\EFApplicationCore.AssemblyInfoInputs.cache
+E:\Documents\learn\NetCoreSignalR\SignalRDemo\EFApplicationCore\obj\Debug\netcoreapp3.0\EFApplicationCore.AssemblyInfo.cs

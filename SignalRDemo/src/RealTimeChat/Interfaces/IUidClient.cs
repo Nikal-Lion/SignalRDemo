@@ -1,4 +1,4 @@
-using RealTimeChat.Entities;
+using DB.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -9,7 +9,7 @@ namespace RealTimeChat.Interfaces
 {
     public interface IUidClient
     {
-        public Task<User> GetLoginUser();
-        public Task SendMarkdown(CorpSendTextDTO dto);
+        Task<User> GetLoginUser();
+        Task<bool> SendMarkdown(CorpSendTextDTO dto);
     }
 }

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealTimeChat", "src\RealTim
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WS.RealTime.Api", "src\WS.RealTime.Api\WS.RealTime.Api.csproj", "{AE6DF742-C810-42DC-830A-AE707FBEBFD8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB.Core", "EFApplicationCore\DB.Core.csproj", "{5E56992E-9446-4676-8DF1-738BABBBE5FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{AE6DF742-C810-42DC-830A-AE707FBEBFD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE6DF742-C810-42DC-830A-AE707FBEBFD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE6DF742-C810-42DC-830A-AE707FBEBFD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E56992E-9446-4676-8DF1-738BABBBE5FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E56992E-9446-4676-8DF1-738BABBBE5FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E56992E-9446-4676-8DF1-738BABBBE5FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E56992E-9446-4676-8DF1-738BABBBE5FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +36,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{85C63B16-FD2D-485A-8FA5-34BCF17CC003} = {5768C6C4-0130-4648-9567-FDBDA66D4C32}
 		{AE6DF742-C810-42DC-830A-AE707FBEBFD8} = {5768C6C4-0130-4648-9567-FDBDA66D4C32}
+		{5E56992E-9446-4676-8DF1-738BABBBE5FB} = {5768C6C4-0130-4648-9567-FDBDA66D4C32}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BBF79754-6F59-4899-ACA2-FC78F719F895}

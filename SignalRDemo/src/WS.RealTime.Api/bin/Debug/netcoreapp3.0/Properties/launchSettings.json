@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "WSReal_Time": {
+    "WS.RealTime.Api": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/values",

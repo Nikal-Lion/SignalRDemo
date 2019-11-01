@@ -5,7 +5,7 @@ using System.Text;
 using RealTimeChat.Interfaces;
 using System.Threading.Tasks;
 
-namespace RealTimeChat.SocketHelper
+namespace RealTimeChat.Hubs
 {
 	public class MessageHub : Hub
     {
