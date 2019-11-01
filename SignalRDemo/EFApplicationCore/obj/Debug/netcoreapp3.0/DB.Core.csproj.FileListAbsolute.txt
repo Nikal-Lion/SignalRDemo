@@ -1,8 +1,0 @@
-E:\Documents\learn\NetCoreSignalR\SignalRDemo\EFApplicationCore\bin\Debug\netcoreapp3.0\DB.Core.deps.json
-E:\Documents\learn\NetCoreSignalR\SignalRDemo\EFApplicationCore\bin\Debug\netcoreapp3.0\DB.Core.dll
-E:\Documents\learn\NetCoreSignalR\SignalRDemo\EFApplicationCore\obj\Debug\netcoreapp3.0\DB.Core.AssemblyInfoInputs.cache
-E:\Documents\learn\NetCoreSignalR\SignalRDemo\EFApplicationCore\obj\Debug\netcoreapp3.0\DB.Core.AssemblyInfo.cs
-E:\Documents\learn\NetCoreSignalR\SignalRDemo\EFApplicationCore\bin\Debug\netcoreapp3.0\DB.Core.pdb
-E:\Documents\learn\NetCoreSignalR\SignalRDemo\EFApplicationCore\obj\Debug\netcoreapp3.0\DB.Core.dll
-E:\Documents\learn\NetCoreSignalR\SignalRDemo\EFApplicationCore\obj\Debug\netcoreapp3.0\DB.Core.pdb
-E:\Documents\learn\NetCoreSignalR\SignalRDemo\EFApplicationCore\obj\Debug\netcoreapp3.0\DB.Core.csprojAssemblyReference.cache
