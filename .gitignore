@@ -1,9 +1,7 @@
 SignalRDemo/.vs
-SignalRDemo/src/DB.Core/bin/
-SignalRDemo/src/DB.Core/obj/
-SignalRDemo/src/RealTimeChat/bin/
-SignalRDemo/src/RealTimeChat/obj/
-SignalRDemo/src/WS.RealTime.Api/bin/
-SignalRDemo/src/WS.RealTime.Api/obj/
-SignalRDemo/src/DB.Core/bin/
-
+SignalRDemo/src/DB.Core/bin/*
+SignalRDemo/src/DB.Core/obj/*
+SignalRDemo/src/RealTimeChat/bin/*
+SignalRDemo/src/RealTimeChat/obj/*
+SignalRDemo/src/WS.RealTime.Api/bin/*
+SignalRDemo/src/WS.RealTime.Api/obj/*

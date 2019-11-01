@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\EFApplicationCore\DB.Core.csproj" />
+    <ProjectReference Include="..\DB.Core\DB.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

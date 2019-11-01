@@ -19,7 +19,12 @@ namespace DB.Core.EF.Util.DataRepo
             Expression<Func<PushMessageDTO, bool>> exp,
             Expression<Func<PushMessageDTO, Message>> msgFunc)
         {
-            throw new NotImplementedException();
+            using var context = new Context.DataContext();
+            //TODO Update many 
+
+            await context.SaveChangesAsync();
+
+            return -1;
         }
         /// <summary>
         /// 更新单个推送实体
@@ -30,7 +35,13 @@ namespace DB.Core.EF.Util.DataRepo
         internal async static Task<int> Update(PushMessageDTO obj, string updateColumn)
         {
 
-            throw new NotImplementedException();
+            using var context = new Context.DataContext();
+            //TODO Update 
+
+            await context.SaveChangesAsync();
+
+            return -1;
+
         }
         /// <summary>
         /// 新增实体

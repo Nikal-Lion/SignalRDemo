@@ -6290,8 +6290,8 @@
     },
     "DB.Core/1.0.0": {
       "type": "project",
-      "path": "../../EFApplicationCore/DB.Core.csproj",
-      "msbuildProject": "../../EFApplicationCore/DB.Core.csproj"
+      "path": "../DB.Core/DB.Core.csproj",
+      "msbuildProject": "../DB.Core/DB.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6332,6 +6332,9 @@
           "projectReferences": {
             "E:\\Documents\\learn\\NetCoreSignalR\\SignalRDemo\\EFApplicationCore\\DB.Core.csproj": {
               "projectPath": "E:\\Documents\\learn\\NetCoreSignalR\\SignalRDemo\\EFApplicationCore\\DB.Core.csproj"
+            },
+            "E:\\Documents\\learn\\NetCoreSignalR\\SignalRDemo\\src\\DB.Core\\DB.Core.csproj": {
+              "projectPath": "E:\\Documents\\learn\\NetCoreSignalR\\SignalRDemo\\src\\DB.Core\\DB.Core.csproj"
             }
           }
         }

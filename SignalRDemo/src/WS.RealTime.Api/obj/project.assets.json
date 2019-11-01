@@ -6419,6 +6419,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.0": [
+      "DB.Core >= 1.0.0",
       "Dapper >= 2.0.30",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.EntityFrameworkCore >= 3.0.0",
@@ -6457,6 +6458,9 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
+            "E:\\Documents\\learn\\NetCoreSignalR\\SignalRDemo\\src\\DB.Core\\DB.Core.csproj": {
+              "projectPath": "E:\\Documents\\learn\\NetCoreSignalR\\SignalRDemo\\src\\DB.Core\\DB.Core.csproj"
+            },
             "E:\\Documents\\learn\\NetCoreSignalR\\SignalRDemo\\src\\RealTimeChat\\RealTimeChat.csproj": {
               "projectPath": "E:\\Documents\\learn\\NetCoreSignalR\\SignalRDemo\\src\\RealTimeChat\\RealTimeChat.csproj"
             }
