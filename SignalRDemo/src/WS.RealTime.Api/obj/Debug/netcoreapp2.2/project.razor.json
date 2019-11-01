@@ -1,0 +1,19 @@
+{
+  "FilePath": "e:\\Documents\\learn\\NETCoreBBS\\src\\WSReal-Time\\WSReal-Time.csproj",
+  "Configuration": {
+    "ConfigurationName": "MVC-2.1",
+    "LanguageVersion": "2.1",
+    "Extensions": [
+      {
+        "ExtensionName": "MVC-2.1"
+      }
+    ]
+  },
+  "ProjectWorkspaceState": {
+    "TagHelpers": [],
+    "CSharpLanguageVersion": 800
+  },
+  "RootNamespace": "WSReal_Time",
+  "Documents": [],
+  "SerializationFormat": "0.2"
+}

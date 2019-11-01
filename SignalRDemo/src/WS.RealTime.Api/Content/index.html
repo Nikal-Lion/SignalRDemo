@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Home Page</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .msg {
+            margin: 30px;
+            height: 300px;
+            border: 2px dotted red;
+        }
+    </style>
+</head>
+<body>
+    <div class="msg" id="msgs">
+    </div>
+
+    <input type="text" id="MessageField" placeholder="输入信息" style="margin-left:30px;" />
+    <input type="button" id="submit" value="发送信息" />
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+            var userName;
+            try {
+                $.ajax({
+                    url: "api/values/GetUsername",
+                    method: "get",
+                    data: [
+                        "id" = 10
+                    ],
+                    dataType: "json",
+                    success: (name) => {
+                        userName = name
+                    },
+                    error: (msg) => {
+                        window.console.error(msg);
+                    }
+                })
+            }
+            catch (e) {
+                console.log(e);
+                userName = "default";
+            }
+            
+            var protocol = location.protocol === "https:" ? "wss:" : "ws:";
+            var wsUri = protocol + "//" + window.location.host + ':' + window.location.port + "/ws";
+            var socket = new WebSocket(wsUri);
+            socket.onopen = e => {
+                console.log("socket opened", e);
+            };
+            socket.onclose = function (e) {
+                console.log("socket closed", e);
+            };
+            //function to recieve from server.
+            socket.onmessage = function (e) {
+                console.log("Message:" + e.data);
+                $('#msgs').append(e.data + '<br />');
+            };
+            socket.onerror = function (e) {
+                console.error(e.data);
+            };
+            $("#submit").click(function () {
+                var message = userName + ": " + $('#MessageField').val();
+                socket.send(message);
+                $('#MessageField').val('');
+            });
+        });
+    </script>
+</body>
+</html>

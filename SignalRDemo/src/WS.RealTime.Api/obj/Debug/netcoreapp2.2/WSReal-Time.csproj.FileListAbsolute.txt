@@ -1,0 +1,17 @@
+E:\Documents\learn\NETCoreBBS\WSReal-Time\obj\Debug\netcoreapp2.2\WSReal-Time.csproj.CoreCompileInputs.cache
+E:\Documents\learn\NETCoreBBS\WSReal-Time\obj\Debug\netcoreapp2.2\WSReal-Time.AssemblyInfoInputs.cache
+E:\Documents\learn\NETCoreBBS\WSReal-Time\obj\Debug\netcoreapp2.2\WSReal-Time.AssemblyInfo.cs
+E:\Documents\learn\NETCoreBBS\WSReal-Time\bin\Debug\netcoreapp2.2\ApplicationCore.dll
+E:\Documents\learn\NETCoreBBS\WSReal-Time\bin\Debug\netcoreapp2.2\ApplicationCore.pdb
+E:\Documents\learn\NETCoreBBS\WSReal-Time\obj\Debug\netcoreapp2.2\WSReal-Time.csprojAssemblyReference.cache
+E:\Documents\learn\NETCoreBBS\WSReal-Time\obj\Debug\netcoreapp2.2\WSReal-Time.RazorAssemblyInfo.cache
+E:\Documents\learn\NETCoreBBS\WSReal-Time\obj\Debug\netcoreapp2.2\WSReal-Time.RazorAssemblyInfo.cs
+E:\Documents\learn\NETCoreBBS\WSReal-Time\obj\Debug\netcoreapp2.2\WSReal-Time.RazorTargetAssemblyInfo.cache
+E:\Documents\learn\NETCoreBBS\WSReal-Time\obj\Debug\netcoreapp2.2\WSReal-Time.csproj.CopyComplete
+E:\Documents\learn\NETCoreBBS\WSReal-Time\bin\Debug\netcoreapp2.2\WSReal_Time.deps.json
+E:\Documents\learn\NETCoreBBS\WSReal-Time\bin\Debug\netcoreapp2.2\WSReal_Time.runtimeconfig.json
+E:\Documents\learn\NETCoreBBS\WSReal-Time\bin\Debug\netcoreapp2.2\WSReal_Time.runtimeconfig.dev.json
+E:\Documents\learn\NETCoreBBS\WSReal-Time\bin\Debug\netcoreapp2.2\WSReal_Time.dll
+E:\Documents\learn\NETCoreBBS\WSReal-Time\bin\Debug\netcoreapp2.2\WSReal_Time.pdb
+E:\Documents\learn\NETCoreBBS\WSReal-Time\obj\Debug\netcoreapp2.2\WSReal_Time.dll
+E:\Documents\learn\NETCoreBBS\WSReal-Time\obj\Debug\netcoreapp2.2\WSReal_Time.pdb
