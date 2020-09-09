@@ -1,13 +1,10 @@
 using Microsoft.AspNetCore.SignalR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using RealTimeChat.Interfaces;
 using System.Threading.Tasks;
 
 namespace RealTimeChat.Hubs
 {
-	public class MessageHub : Hub
+    public class MessageHub : Hub
     {
         private readonly IUidClient _uidClient;
 
@@ -22,5 +19,5 @@ namespace RealTimeChat.Hubs
             //将同一个人的连接ID绑定到同一个分组，推送时就推送给这个分组
             await Groups.AddToGroupAsync(Context.ConnectionId, user.Account);
         }
-	}
+    }
 }

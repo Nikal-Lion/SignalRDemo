@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DB.Core.Entities
+﻿namespace DB.Core.Entities
 {
     public class BaseEntity
     {

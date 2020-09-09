@@ -1,7 +1,3 @@
-using System.Text;
-using System;
-using System.Collections.Generic;
-
 namespace DB.Core.Entities
 {
     public class CorpSendTextDTO

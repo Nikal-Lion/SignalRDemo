@@ -1,14 +1,14 @@
-using System;
-using RealTimeChat.Interfaces;
-using Microsoft.AspNetCore.SignalR;
-using System.Threading.Tasks;
-using DB.Core.Entities;
-using System.Linq.Expressions;
-using RealTimeChat.EnumUtil;
-using RealTimeChat.ExceptionUtil;
 using DB.Core.Dapper.Util;
 using DB.Core.EF.Util.DataRepo;
+using DB.Core.Entities;
+using Microsoft.AspNetCore.SignalR;
+using RealTimeChat.EnumUtil;
+using RealTimeChat.ExceptionUtil;
 using RealTimeChat.Hubs;
+using RealTimeChat.Interfaces;
+using System;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace RealTimeChat.Services
 {
@@ -233,12 +233,12 @@ namespace RealTimeChat.Services
             ConstantExpression constant = null;
             //Expression.Constant(18, typeof(int));
 
-            BinaryExpression body =null;
+            BinaryExpression body = null;
             if (nodeType == ExpressionType.And)
             {
                 //body = Expression.And(parameter.Type)
             }
-            else if(nodeType == ExpressionType.GreaterThan)
+            else if (nodeType == ExpressionType.GreaterThan)
             {
                 body = Expression.GreaterThanOrEqual(me, constant);
             }

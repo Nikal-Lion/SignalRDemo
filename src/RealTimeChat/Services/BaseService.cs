@@ -1,4 +1,3 @@
-using System;
 using RealTimeChat.Interfaces;
 
 namespace RealTimeChat.Services

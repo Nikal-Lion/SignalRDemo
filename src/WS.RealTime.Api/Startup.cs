@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+﻿using Microsoft.AspNetCore.Builder;
 //using Microsoft.AspNetCore.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using RealTimeChat.SocketHelper;
-using WS.RealTime.Api.Middleware;
 using RealTimeChat.Hubs;
+using RealTimeChat.SocketHelper;
+using System;
+using WS.RealTime.Api.Middleware;
 
 namespace WS.RealTime.Api
 {
@@ -41,7 +34,7 @@ namespace WS.RealTime.Api
             });
 #if DEBUG
             //注入跨域
-            services.AddCors(option => option.AddPolicy("cors", 
+            services.AddCors(option => option.AddPolicy("cors",
                 policy => policy.AllowAnyHeader().AllowAnyMethod().AllowCredentials()
                     .WithOrigins("http://localhost:8001", "http://localhost:8000", "http://localhost:8002")));
 #endif
@@ -57,8 +50,8 @@ namespace WS.RealTime.Api
             //}
             //else
             //{
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseHsts();
             //}
             app.UseWebSockets();
             app.UseEndpoints(endpoints =>

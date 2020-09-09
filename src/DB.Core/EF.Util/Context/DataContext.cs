@@ -1,6 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MySql.Data.EntityFrameworkCore.Extensions;
-using DB.Core.Entities;
+﻿using DB.Core.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace DB.Core.EF.Util.Context
 {

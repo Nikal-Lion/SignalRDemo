@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Dapper;
+using DB.Core.Entities;
+using System;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
-using Dapper;
-using DB.Core.Entities;
 //using MySql.Data.MySqlClient;
 
 namespace DB.Core.Dapper.Util
@@ -76,7 +74,7 @@ namespace DB.Core.Dapper.Util
             //WHERE   RowNum >= 1 // *your pagination parameters
             //    AND RowNum < 20  //*
             //ORDER BY RowNum"
-            
+
             //TODO tranlate Expression to raw sql 
             //string where = exp.ToString().Replace(" AndAlso ", " and ");
 

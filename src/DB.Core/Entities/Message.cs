@@ -5,7 +5,7 @@ namespace DB.Core.Entities
     /// <summary>
     /// 
     /// </summary>
-    public class Message 
+    public class Message
     {
         /// <summary>
         /// 

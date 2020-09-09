@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using RealTimeChat.EnumUtil;
+﻿using RealTimeChat.EnumUtil;
+using System;
 
 namespace RealTimeChat.ExceptionUtil
 {

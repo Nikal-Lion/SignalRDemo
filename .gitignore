@@ -2,5 +2,6 @@
 .suo
 
 .vs/
+.sonarqube/
 [Oo]bj/
 [Bb]in/

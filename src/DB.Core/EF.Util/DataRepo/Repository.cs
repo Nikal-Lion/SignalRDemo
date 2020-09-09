@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DB.Core.Entities;
-using System.Threading.Tasks;
+﻿using DB.Core.Entities;
+using System;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace DB.Core.EF.Util.DataRepo
 {
@@ -52,7 +50,7 @@ namespace DB.Core.EF.Util.DataRepo
         public async static Task<int> Insert<T>(T log)
         {
             using var context = new Context.DataContext();
-            
+
             context.Entry(log).State = Microsoft.EntityFrameworkCore.EntityState.Added;
             await context.SaveChangesAsync();
 
@@ -61,7 +59,7 @@ namespace DB.Core.EF.Util.DataRepo
         public async static Task<int> Update<T>(T updateObj, string column) where T : class, new()
         {
             using var context = new Context.DataContext();
-           
+
             var entry = context.Entry(updateObj);
             entry.Property(column).IsModified = true;
 

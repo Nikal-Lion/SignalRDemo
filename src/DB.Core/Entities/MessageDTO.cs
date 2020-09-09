@@ -1,7 +1,3 @@
-using System.Text;
-using System.Runtime;
-using System;
-
 namespace DB.Core.Entities
 {
     public class MessageDTO
