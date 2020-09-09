@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using RealTimeChat.SocketHelper;
-using System.Net.WebSockets;
+﻿using System.Net.WebSockets;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using RealTimeChat.SocketHelper;
 
 namespace WS.RealTime.Api.Middleware
 {
@@ -9,7 +9,7 @@ namespace WS.RealTime.Api.Middleware
     {
         private readonly RequestDelegate _next;
         private WSManager _wSConnectionManager { get; set; }
-        private WSHandler _wsHanlder { get; set; }
+        private WSHandler _wsHandler { get; set; }
 
         public RealTimeWSMiddleware(
             RequestDelegate next,
@@ -18,7 +18,7 @@ namespace WS.RealTime.Api.Middleware
         {
             _next = next;
             _wSConnectionManager = WSManager;
-            _wsHanlder = wsHandler;
+            _wsHandler = wsHandler;
         }
 
         public async Task Invoke(HttpContext httpContext)
@@ -32,17 +32,14 @@ namespace WS.RealTime.Api.Middleware
                 while (true)
                 {
                     if (cancellationToken.IsCancellationRequested) break;
-                    var response = await _wsHanlder.ReceiveAsync(currentWebSocket, cancellationToken);
+                    var response = await _wsHandler.ReceiveAsync(currentWebSocket, cancellationToken);
 
                     if (string.IsNullOrEmpty(response) && currentWebSocket.State != WebSocketState.Open) break;
 
                     foreach (var item in _wSConnectionManager.GetAll())
                     {
                         if (item.Value.State == WebSocketState.Open)
-                        {
-                            await _wsHanlder.SendMessageAsync(item.Value, response, cancellationToken);
-                        }
-                        continue;
+                            await _wsHandler.SendMessageAsync(item.Value, response, cancellationToken);
                     }
                 }
 

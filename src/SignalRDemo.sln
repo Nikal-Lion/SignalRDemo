@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WS.RealTime.Api", "WS.RealT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB.Core", "DB.Core\DB.Core.csproj", "{7665BEB7-AF2D-4A1A-85FB-AE7F718F315E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{CF746532-B0A5-47D8-B382-061938DE99D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,5 +35,9 @@ Global
 		{7665BEB7-AF2D-4A1A-85FB-AE7F718F315E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7665BEB7-AF2D-4A1A-85FB-AE7F718F315E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7665BEB7-AF2D-4A1A-85FB-AE7F718F315E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF746532-B0A5-47D8-B382-061938DE99D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF746532-B0A5-47D8-B382-061938DE99D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF746532-B0A5-47D8-B382-061938DE99D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF746532-B0A5-47D8-B382-061938DE99D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

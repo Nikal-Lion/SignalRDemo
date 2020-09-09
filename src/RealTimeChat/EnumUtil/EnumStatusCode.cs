@@ -2,6 +2,6 @@
 {
     public enum EnumStatusCode
     {
-        ArgumentOutOfRange
+        ArgumentOutOfRange = 0,
     }
 }

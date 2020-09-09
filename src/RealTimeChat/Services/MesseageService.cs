@@ -1,3 +1,7 @@
+using System;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
+using Common;
 using DB.Core.Dapper.Util;
 using DB.Core.EF.Util.DataRepo;
 using DB.Core.Entities;
@@ -6,13 +10,9 @@ using RealTimeChat.EnumUtil;
 using RealTimeChat.ExceptionUtil;
 using RealTimeChat.Hubs;
 using RealTimeChat.Interfaces;
-using System;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 
 namespace RealTimeChat.Services
 {
-
 
     public class MessageService : BaseService<Message, ObjectId>, IMessageService
     {
@@ -30,9 +30,11 @@ namespace RealTimeChat.Services
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async Task Add(MessageDTO dto)
+        public async Task AddAsync(MessageDTO dto)
         {
             var now = DateTime.Now;
+            if (dto is null)
+                return;
 
             var log = new Message
             {
@@ -46,7 +48,7 @@ namespace RealTimeChat.Services
 
             var push = new PushMessageDTO
             {
-                Id = log.Id.ToString(),
+                Id = log.Id,
                 Name = log.Name,
                 Detail = log.Detail,
                 Type = log.Type,
@@ -54,11 +56,11 @@ namespace RealTimeChat.Services
                 CreateTime = now
             };
 
-            await DB.Core.EF.Util.DataRepo.Repository.Insert(log);
+            await DB.Core.EF.Util.DataRepo.Repository.Insert(log).ConfigureAwait(false);
             //推送站内信
-            await _messageHub.Clients.Groups(dto.ToUser).SendAsync("newmsg", push);
+            await _messageHub.Clients.Groups(dto.ToUser).SendAsync("newmsg", push).ConfigureAwait(false);
             //推送未读条数
-            await SendUnreadCount(dto.ToUser);
+            await SendUnreadCountAsync(dto.ToUser).ConfigureAwait(false);
 
             if (dto.PushCorpWeixin)
             {
@@ -73,7 +75,7 @@ namespace RealTimeChat.Services
                 {
                     touser = dto.ToUser,
                     content = string.Format(content, dto.Name, now, log.Id, dto.Detail)
-                });
+                }).ConfigureAwait(false);
             }
         }
 
@@ -89,7 +91,7 @@ namespace RealTimeChat.Services
         /// <param name="pageIndex">当前页</param>
         /// <param name="pageSize">每页个数</param>
         /// <returns></returns>
-        public async Task<PagedData<PushMessageDTO>> GetMyMessage(
+        public async Task<PagedData<PushMessageDTO>> GetMyMessageAsync(
             string name,
             string detail,
             bool unread = false,
@@ -99,7 +101,7 @@ namespace RealTimeChat.Services
             int pageIndex = 1,
             int pageSize = 10)
         {
-            var user = await _uidClient.GetLoginUser();
+            var user = await _uidClient.GetLoginUser().ConfigureAwait(false);
             Expression<Func<Message, bool>> exp = o => o.ToUser == user.Account;
 
             if (unread)
@@ -108,23 +110,23 @@ namespace RealTimeChat.Services
             }
             if (!string.IsNullOrEmpty(name))
             {
-                //exp = exp.And(o => o.Name.Contains(name));
+                exp = exp.And(o => o.Name.Contains(name));
             }
             if (!string.IsNullOrEmpty(detail))
             {
-                //exp = exp.And(o => o.Detail.Contains(detail));
+                exp = exp.And(o => o.Detail.Contains(detail));
             }
             if (type != null)
             {
-                //exp = exp.And(o => o.Type == type.Value);
+                exp = exp.And(o => o.Type == type.Value.ToString());
             }
             if (createStart != null)
             {
-                //exp.And(o => o.CreateTime >= createStart.Value);
+                exp.And(o => o.CreateTime >= createStart.Value);
             }
             if (createEnd != null)
             {
-                //exp.And(o => o.CreateTime < createEnd.Value);
+                exp.And(o => o.CreateTime < createEnd.Value);
             }
 
             return await QueryUtil.FindPageObjectList(
@@ -135,7 +137,7 @@ namespace RealTimeChat.Services
                 pageSize,
                 o => new PushMessageDTO
                 {
-                    Id = o.Id.ToString(),
+                    Id = o.Id,
                     CreateTime = o.CreateTime,
                     Detail = o.Detail,
                     Name = o.Name,
@@ -151,9 +153,9 @@ namespace RealTimeChat.Services
         /// </summary>
         /// <param name="id">站内信ID</param>
         /// <returns></returns>
-        public async Task Read(ObjectId id)
+        public async Task ReadAsync(ObjectId id)
         {
-            var msg = await QueryUtil.First<Message>(id);
+            var msg = await QueryUtil.First<Message>(id).ConfigureAwait(false);
 
             if (msg == null)
             {
@@ -167,85 +169,47 @@ namespace RealTimeChat.Services
             }
 
             msg.ReadTime = DateTime.Now;
-            await Repository.Update(msg, "ReadTime");
-            await SendUnreadCount(msg.ToUser);
+            await Repository.Update(msg, "ReadTime").ConfigureAwait(false);
+            await SendUnreadCountAsync(msg.ToUser).ConfigureAwait(false);
         }
 
         /// <summary>
         /// 设置本人全部已读
         /// </summary>
         /// <returns></returns>
-        public async Task ReadAll()
+        public async Task ReadAllAsync()
         {
-            var user = await _uidClient.GetLoginUser();
+            var user = await _uidClient.GetLoginUser().ConfigureAwait(false);
 
             await Repository.UpdateMany(
                 o => o.ToUser == user.Account && o.ReadTime == null,
                 o => new Message
                 {
                     ReadTime = DateTime.Now
-                });
+                }).ConfigureAwait(false);
 
-            await SendUnreadCount(user.Account);
+            await SendUnreadCountAsync(user.Account).ConfigureAwait(false);
         }
 
         /// <summary>
         /// 获取本人未读条数
         /// </summary>
         /// <returns></returns>
-        public async Task<int> GetUnreadCount()
+        public async Task<int> GetUnreadCountAsync()
         {
-            var user = await _uidClient.GetLoginUser();
-            return await QueryUtil.Count(user.Account, null);
+            var user = await _uidClient.GetLoginUser().ConfigureAwait(false);
+            return await QueryUtil.Count(user.Account, null).ConfigureAwait(false);
         }
 
         /// <summary>
         /// 推送未读数到前端
         /// </summary>
         /// <returns></returns>
-        public async Task SendUnreadCount(string account)
+        public async Task SendUnreadCountAsync(string account)
         {
-            int count = await QueryUtil.Count(account, null);
+            int count = await QueryUtil.Count(account, null).ConfigureAwait(false);
 
-            await _messageHub.Clients.Groups(account).SendAsync("unread", count);
-        }
-    }
-    public static class ExpressionAnd
-    {
-        /// <summary>
-        /// TODO 未实现And方法
-        /// </summary>
-        /// <typeparam name="TDelegate"></typeparam>
-        /// <param name="originExp"></param>
-        /// <param name="func"></param>
-        /// <returns></returns>
-        public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> originExp, Expression<Func<T, bool>> func)
-            where T : class
-        {
-            var parameter = originExp.Parameters[0];
-            string parameterName = parameter?.Name ?? "o";      //o=>o.Prop... o = parameter.Name;
-            var nodeType = parameter.NodeType;
-            ParameterExpression pe = Expression.Parameter(typeof(T), parameterName);
-
-            MemberExpression me = null;
-            //Expression.Property(pe, "Age");
-
-            ConstantExpression constant = null;
-            //Expression.Constant(18, typeof(int));
-
-            BinaryExpression body = null;
-            if (nodeType == ExpressionType.And)
-            {
-                //body = Expression.And(parameter.Type)
-            }
-            else if (nodeType == ExpressionType.GreaterThan)
-            {
-                body = Expression.GreaterThanOrEqual(me, constant);
-            }
-
-            var expressionTree = Expression.Lambda<Func<T, bool>>(body, new[] { pe });
-
-            return expressionTree;
+            await _messageHub.Clients.Groups(account).SendAsync("unread", count).ConfigureAwait(false);
         }
     }
 }
