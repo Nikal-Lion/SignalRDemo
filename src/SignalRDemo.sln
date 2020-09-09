@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5768C6C4-0130-4648-9567-FDBDA66D4C32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealTimeChat", "RealTimeChat\RealTimeChat.csproj", "{85C63B16-FD2D-485A-8FA5-34BCF17CC003}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealTimeChat", "src\RealTimeChat\RealTimeChat.csproj", "{85C63B16-FD2D-485A-8FA5-34BCF17CC003}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WS.RealTime.Api", "WS.RealTime.Api\WS.RealTime.Api.csproj", "{AE6DF742-C810-42DC-830A-AE707FBEBFD8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WS.RealTime.Api", "src\WS.RealTime.Api\WS.RealTime.Api.csproj", "{AE6DF742-C810-42DC-830A-AE707FBEBFD8}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DB.Core", "src\DB.Core\DB.Core.csproj", "{040ACEEF-35B7-4FC4-84B5-46E8811FE9D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DB.Core", "DB.Core\DB.Core.csproj", "{040ACEEF-35B7-4FC4-84B5-46E8811FE9D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

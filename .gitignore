@@ -5,3 +5,7 @@ SignalRDemo/src/RealTimeChat/bin/
 SignalRDemo/src/RealTimeChat/obj/
 SignalRDemo/src/WS.RealTime.Api/bin/
 SignalRDemo/src/WS.RealTime.Api/obj/
+
+.vs/*
+[Oo]bj/*
+[Bb]in/*

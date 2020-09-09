@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="zh">
+
 <head>
     <meta charset="utf-8" />
     <title>Home Page</title>
@@ -16,6 +17,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="msg" id="msgs">
     </div>
@@ -42,12 +44,11 @@
                         window.console.error(msg);
                     }
                 })
-            }
-            catch (e) {
+            } catch (e) {
                 console.log(e);
                 userName = "default";
             }
-            
+
             var protocol = location.protocol === "https:" ? "wss:" : "ws:";
             var wsUri = protocol + "//" + window.location.host + ':' + window.location.port + "/ws";
             var socket = new WebSocket(wsUri);
@@ -73,4 +74,5 @@
         });
     </script>
 </body>
+
 </html>
